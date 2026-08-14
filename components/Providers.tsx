@@ -57,12 +57,6 @@ const CORRECTION: { name: string; Icon: Mark }[] = [
   { name: "Anthropic", Icon: ClaudeIcon },
 ];
 
-/* fixed diagram coordinates (percent of the box) — identical in both themes */
-const XS = [20, 50, 80];
-const SPEECH_Y = 10;
-const NODE_Y = 50;
-const CORR_Y = 90;
-
 /* fly-in origins: [x, y] offsets, per column position */
 const FROM_TOP: [string, string][] = [
   ["-60vw", "0"],
@@ -79,6 +73,13 @@ function route(fromX: number, fromY: number, toX: number, toY: number) {
   const my = (fromY + toY) / 2;
   return `M ${fromX} ${fromY} C ${fromX} ${my}, ${toX} ${my}, ${toX} ${toY}`;
 }
+
+/* endpoints, measured off the real DOM so the routes always TOUCH the pills */
+type Pts = {
+  sx: number; sy: number;
+  nx: number; nt: number; nb: number;
+  kx: number; ky: number;
+};
 
 function Chip({
   label,
@@ -136,7 +137,49 @@ export default function Providers() {
   const [speech, setSpeech] = useState("PyAI");
   const [corr, setCorr] = useState("PyAI");
   const [shown, setShown] = useState(false);
+  const [pts, setPts] = useState<Pts | null>(null);
   const ref = useRef<HTMLElement>(null);
+  const diagRef = useRef<HTMLDivElement>(null);
+  const speechRowRef = useRef<HTMLDivElement>(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
+  const corrRowRef = useRef<HTMLDivElement>(null);
+
+  // measure the active pills and the transcript node, in diagram pixels —
+  // run after the fly-in transitions settle, and again on resize/selection
+  useEffect(() => {
+    if (!shown) return;
+    const measure = () => {
+      const c = diagRef.current;
+      const s = speechRowRef.current?.children[
+        SPEECH.findIndex((p) => p.name === speech)
+      ] as HTMLElement | undefined;
+      const n = nodeRef.current;
+      const k = corrRowRef.current?.children[
+        CORRECTION.findIndex((p) => p.name === corr)
+      ] as HTMLElement | undefined;
+      if (!c || !s || !n || !k) return;
+      const cr = c.getBoundingClientRect();
+      const sr = s.getBoundingClientRect();
+      const nr = n.getBoundingClientRect();
+      const kr = k.getBoundingClientRect();
+      setPts({
+        sx: sr.left + sr.width / 2 - cr.left,
+        sy: sr.bottom - cr.top - 2,
+        nx: nr.left + nr.width / 2 - cr.left,
+        nt: nr.top - cr.top + 2,
+        nb: nr.bottom - cr.top - 2,
+        kx: kr.left + kr.width / 2 - cr.left,
+        ky: kr.top - cr.top + 2,
+      });
+    };
+    // wait out the 700ms fly-in (plus stagger) so transforms are identity
+    const t = setTimeout(measure, 850);
+    window.addEventListener("resize", measure);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, [shown, speech, corr]);
 
   useEffect(() => {
     const el = ref.current;
@@ -158,8 +201,6 @@ export default function Providers() {
     return () => io.disconnect();
   }, []);
 
-  const sx = XS[SPEECH.findIndex((p) => p.name === speech)];
-  const cx = XS[CORRECTION.findIndex((p) => p.name === corr)];
 
   return (
     <section
@@ -178,39 +219,38 @@ export default function Providers() {
         </div>
 
         {/* the mixer */}
-        <div className="relative mx-auto max-w-xl">
+        <div ref={diagRef} className="relative mx-auto max-w-xl">
           <svg
-            className="pointer-events-none absolute inset-x-0 top-[3.2rem] h-[13rem] w-full"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0 h-full w-full"
             aria-hidden
           >
-            {shown && (
+            {pts && (
               <>
                 <path
-                  key={`s-${speech}`}
-                  d={route(sx, SPEECH_Y, 50, NODE_Y - 8)}
+                  key={`s-${speech}-${pts.sx.toFixed(0)}`}
+                  d={route(pts.sx, pts.sy, pts.nx, pts.nt)}
                   className="provider-path"
                   fill="none"
                   stroke="var(--cyan)"
-                  vectorEffect="non-scaling-stroke"
-                  style={{ strokeWidth: 1.5 }}
+                  strokeWidth="1.5"
                 />
                 <path
-                  key={`c-${corr}`}
-                  d={route(50, NODE_Y + 8, cx, CORR_Y)}
+                  key={`c-${corr}-${pts.kx.toFixed(0)}`}
+                  d={route(pts.nx, pts.nb, pts.kx, pts.ky)}
                   className="provider-path"
                   fill="none"
                   stroke="var(--violet)"
-                  vectorEffect="non-scaling-stroke"
-                  style={{ strokeWidth: 1.5 }}
+                  strokeWidth="1.5"
                 />
               </>
             )}
           </svg>
 
           <p className="t-kicker mb-4 justify-center text-center">speech</p>
-          <div className="relative z-10 grid grid-cols-3 justify-items-center gap-2">
+          <div
+            ref={speechRowRef}
+            className="relative z-10 grid grid-cols-3 justify-items-center gap-2"
+          >
             {SPEECH.map(({ name, Icon }, i) => (
               <Chip
                 key={name}
@@ -227,13 +267,19 @@ export default function Providers() {
             ))}
           </div>
 
-          <div className="relative z-10 mx-auto my-14 w-fit rounded-full border border-line bg-background/60 px-6 py-2.5 backdrop-blur-sm">
+          <div
+            ref={nodeRef}
+            className="relative z-10 mx-auto my-14 w-fit rounded-full border border-line bg-background/60 px-6 py-2.5 backdrop-blur-sm"
+          >
             <span className="text-[15px] font-medium text-foreground">
               your transcript
             </span>
           </div>
 
-          <div className="relative z-10 grid grid-cols-3 justify-items-center gap-2">
+          <div
+            ref={corrRowRef}
+            className="relative z-10 grid grid-cols-3 justify-items-center gap-2"
+          >
             {CORRECTION.map(({ name, Icon }, i) => (
               <Chip
                 key={name}
