@@ -199,10 +199,10 @@ export default function FeatureGrid() {
           {/* hold fn — the key jumps */}
           <div className="feat-tile feat-tile--paper feat-tile--lavender ink items-center text-center sm:col-span-3">
             <span className="feat-bounce rounded-lg border border-line bg-white px-3.5 py-2 font-mono text-[16px] font-semibold text-foreground shadow-[0_3px_0_rgba(0,0,0,0.12)]">
-              ⌥ Space
+              fn + Space
             </span>
             <p className="mt-4 text-[14px] text-muted">
-              tap to toggle · hold to talk
+              tap to toggle · hold to talk (configurable)
             </p>
           </div>
 
