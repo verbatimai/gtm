@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import Footer from "@/components/Footer";
+import Logo from "@/components/Logo";
 import Nav, { DOWNLOAD_URL, GITHUB_URL } from "@/components/Nav";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ const ROWS: RowT[] = [
   { label: "Live streaming transcript", note: "stable text + volatile tail while you speak", us: true, them: true },
   { label: "Formatting modes", note: "prose · message · code · raw", us: true, them: true },
   { label: "Custom vocabulary & snippets", us: true, them: true },
+  { label: "Wake word", note: "“Hey Jarvis!” — hands-free activation", us: "Coming — in exploration", them: false },
   { label: "Content telemetry", note: "what you say, collected as data", us: "Never — not collectable", them: "Cloud account required" },
   { label: "Key storage", us: "macOS Keychain", them: "—" },
   { label: "Platforms", us: "macOS (Windows coming)", them: "Mac · Windows · iPhone" },
@@ -29,10 +31,14 @@ const ROWS: RowT[] = [
 
 function CellView({ v, strong = false }: { v: Cell; strong?: boolean }) {
   if (v === true)
-    return <span className={strong ? "text-[17px] text-[#34d399]" : "text-[17px] text-muted"}>✓</span>;
-  if (v === false) return <span className="text-[15px] text-muted/60">✗</span>;
+    return (
+      <span className={`text-[18px] font-semibold ${strong ? "cmp-yes" : "text-muted"}`}>
+        ✓
+      </span>
+    );
+  if (v === false) return <span className="cmp-no text-[16px]">✗</span>;
   return (
-    <span className={`text-[13.5px] leading-snug ${strong ? "font-medium text-foreground" : "text-muted"}`}>
+    <span className={`text-[14px] leading-snug ${strong ? "font-semibold text-foreground" : "text-muted"}`}>
       {v}
     </span>
   );
@@ -56,14 +62,21 @@ export default function ComparePage() {
             </p>
           </div>
 
-          <div className="overflow-hidden rounded-2xl border border-line">
-            {/* header */}
-            <div className="grid grid-cols-[1.4fr_1fr_1fr] border-b border-line bg-foreground/[0.04]">
-              <span className="px-5 py-3.5" />
-              <span className="px-4 py-3.5 text-[14px] font-bold tracking-tight text-foreground">
+          <div className="overflow-hidden rounded-2xl border border-line bg-background/40 backdrop-blur-sm">
+            {/* header — both marks */}
+            <div className="grid grid-cols-[1.4fr_1fr_1fr] border-b border-line">
+              <span className="px-5 py-4" />
+              <span className="cmp-us flex items-center gap-2 px-4 py-4 text-[15px] font-bold tracking-tight text-foreground">
+                <Logo className="h-[22px] w-[22px] shrink-0 text-foreground" />
                 Verbatim
               </span>
-              <span className="px-4 py-3.5 text-[14px] font-medium text-muted">
+              <span className="flex items-center gap-2 px-4 py-4 text-[15px] font-medium text-muted">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logos/wisprflow.svg"
+                  alt=""
+                  className="h-[22px] w-[22px] shrink-0 rounded-full"
+                />
                 Wispr Flow
               </span>
             </div>
@@ -73,16 +86,16 @@ export default function ComparePage() {
                 key={r.label}
                 className="grid grid-cols-[1.4fr_1fr_1fr] border-b border-line last:border-b-0"
               >
-                <div className="px-5 py-3.5">
-                  <p className="text-[14px] font-medium text-foreground">{r.label}</p>
+                <div className="px-5 py-4">
+                  <p className="text-[14.5px] font-medium text-foreground">{r.label}</p>
                   {r.note && (
-                    <p className="mt-0.5 text-[12px] leading-relaxed text-muted">{r.note}</p>
+                    <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted">{r.note}</p>
                   )}
                 </div>
-                <div className="flex items-center bg-foreground/[0.04] px-4 py-3.5">
+                <div className="cmp-us flex items-center px-4 py-4">
                   <CellView v={r.us} strong />
                 </div>
-                <div className="flex items-center px-4 py-3.5">
+                <div className="flex items-center px-4 py-4">
                   <CellView v={r.them} />
                 </div>
               </div>

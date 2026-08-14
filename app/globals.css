@@ -1022,6 +1022,18 @@ html[data-theme="light"] .roadmap-title--green, html[data-theme="light"] .roadma
   white-space: nowrap;
 }
 
+/* ---------- compare table, theme-sensitive ---------- */
+.cmp-us {
+  background: rgba(139, 123, 240, 0.13);
+}
+html[data-theme="light"] .cmp-us {
+  background: rgba(88, 130, 245, 0.1);
+}
+.cmp-yes { color: #34d399; }
+html[data-theme="light"] .cmp-yes { color: #0e9463; }
+.cmp-no { color: #f87171; opacity: 0.75; }
+html[data-theme="light"] .cmp-no { color: #c14b45; }
+
 /* ---------- finale statement legibility, per theme ---------- */
 .finale-scrim {
   background: radial-gradient(

@@ -231,16 +231,42 @@ export default function FeatureGrid() {
             href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="feat-tile feat-tile--dark items-center text-center transition-colors hover:border-white/25 sm:col-span-6"
+            className="feat-tile feat-tile--dark items-center text-center transition-colors hover:border-white/25 sm:col-span-3"
           >
             <GitHubMark className="h-7 w-7 text-foreground" />
             <h3 className="mt-4 text-[19px] font-semibold tracking-tight text-foreground">
               Free &amp; open source
             </h3>
             <p className="t-body-sm mt-2">
-              every line of it on GitHub — audit the privacy claims yourself
+              every line on GitHub — audit the privacy claims yourself
             </p>
           </a>
+
+          {/* wake word */}
+          <div className="feat-tile feat-tile--dark items-center text-center sm:col-span-3">
+            <span className="tag tag--exploring absolute right-3 top-3">
+              Exploring
+            </span>
+            <span className="flex items-end gap-[3px]" aria-hidden>
+              {[0.5, 0.85, 0.6, 1, 0.7].map((h, i) => (
+                <span
+                  key={i}
+                  className="cue-bar accent-bar rounded-full"
+                  style={{
+                    width: 3,
+                    height: `${(h * 22).toFixed(0)}px`,
+                    animationDelay: `${(-i * 0.14).toFixed(2)}s`,
+                  }}
+                />
+              ))}
+            </span>
+            <h3 className="mt-4 text-[22px] font-semibold tracking-tight text-foreground">
+              &ldquo;Hey Jarvis!&rdquo;
+            </h3>
+            <p className="t-body-sm mt-2">
+              wake-word activation — hands never touch the keyboard
+            </p>
+          </div>
         </div>
       </div>
     </section>
