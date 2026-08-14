@@ -1,5 +1,4 @@
 import ComingNext from "@/components/ComingNext";
-import DesktopShot from "@/components/DesktopShot";
 import FeatureGrid from "@/components/FeatureGrid";
 import Footer from "@/components/Footer";
 import FormatModes from "@/components/FormatModes";
@@ -38,9 +37,6 @@ export default function Home() {
         <LiveTranscriptScene id="story" />
         <CleanupScene />
         <AppDeckScene />
-
-        {/* the desktop, as it actually looks */}
-        <DesktopShot />
 
         {/* the interactive run — same atmosphere, calmer rhythm */}
         <FormatModes />
