@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>verbatim — logo concepts</title>
+<style>
+  :root {
+    --bg: #060609;
+    --ink: #f4f4f7;
+    --muted: #8f8fa3;
+    --line: rgba(255,255,255,.09);
+    --glass: rgba(255,255,255,.035);
+    --cyan: #22d3ee;
+    --violet: #8b5cf6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Inter, "SF Pro Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 64px 28px 96px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before, body::after {
+    content: ""; position: fixed; z-index: 0; pointer-events: none;
+    width: 60vw; height: 60vw; border-radius: 50%; filter: blur(120px); opacity: .18;
+  }
+  body::before { background: var(--cyan); top: -22vw; left: -14vw; }
+  body::after  { background: var(--violet); bottom: -26vw; right: -16vw; }
+
+  .wrap { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--muted); margin: 0 0 14px;
+  }
+  h1 {
+    margin: 0 0 12px; font-size: clamp(32px, 5vw, 52px); font-weight: 600;
+    letter-spacing: -.03em; line-height: 1.05;
+    background: linear-gradient(100deg, #fff 20%, var(--cyan) 62%, var(--violet) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .sub { margin: 0 0 52px; color: var(--muted); font-size: 15px; max-width: 60ch; line-height: 1.6; }
+
+  .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 18px 18px 20px;
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+    box-shadow: 0 1px 0 rgba(255,255,255,.06) inset, 0 24px 60px -30px rgba(0,0,0,.9);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .card-hd { display: flex; align-items: baseline; gap: 10px; }
+  .num {
+    font-size: 11px; font-variant-numeric: tabular-nums; letter-spacing: .1em;
+    color: transparent; background: linear-gradient(90deg, var(--cyan), var(--violet));
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .card h2 { margin: 0; font-size: 14px; font-weight: 550; letter-spacing: -.01em; }
+
+  .stage {
+    border-radius: 14px; padding: 26px 18px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line);
+  }
+  .stage-dark  { background: #08080d; color: #fff; }
+  .stage-light { background: #f2f2f5; color: #101014; border-color: rgba(0,0,0,.08); }
+  .lockup svg { height: 46px; width: auto; display: block; }
+
+  .icons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .swatch {
+    border-radius: 12px; padding: 14px 10px 10px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    flex-wrap: wrap; border: 1px solid var(--line); position: relative;
+  }
+  .swatch.dark  { background: #08080d; }
+  .swatch.light { background: #f2f2f5; border-color: rgba(0,0,0,.08); }
+  .swatch img { display: block; }
+  .lbl {
+    flex: 0 0 100%; text-align: center; font-size: 10px; letter-spacing: .06em;
+    color: var(--muted); margin-top: 2px;
+  }
+  .swatch.light .lbl { color: #75758a; }
+
+  .why {
+    margin: 2px 2px 0; font-size: 12.5px; line-height: 1.55; color: var(--muted);
+    border-left: 2px solid transparent;
+    border-image: linear-gradient(180deg, var(--cyan), var(--violet)) 1;
+    padding-left: 10px;
+  }
+  footer { margin-top: 56px; color: var(--muted); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">brand exploration</p>
+    <h1>verbatim &mdash; four logo concepts</h1>
+    <p class="sub">Open-source real&#8209;time dictation. Each concept is shown as a lockup on dark and light, plus the icon mark at 48&nbsp;px and 24&nbsp;px to judge favicon&#8209;size legibility.</p>
+    <div class="grid">
+    <article class="card">
+      <header class="card-hd">
+        <span class="num">01</span>
+        <h2>Waveform → text</h2>
+      </header>
+
+      <div class="stage stage-dark">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c1lg-d1" x1="9" y1="46" x2="34" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <g fill="none" stroke-width="5" stroke-linecap="round">
+    <g stroke="url(#c1lg-d1)">
+      <path d="M11 23V41"/>
+      <path d="M21 16V48"/>
+      <path d="M31 20V44"/>
+    </g>
+    <g stroke="#ffffff">
+      <path d="M40 22H54"/>
+      <path d="M40 32H54"/>
+      <path d="M40 42H48" stroke-opacity="0.55"/>
+    </g>
+  </g>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+</svg>
+</div>
+      </div>
+
+      <div class="stage stage-light">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c1lg-l1" x1="9" y1="46" x2="34" y2="18" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <g fill="none" stroke-width="5" stroke-linecap="round">
+    <g stroke="url(#c1lg-l1)">
+      <path d="M11 23V41"/>
+      <path d="M21 16V48"/>
+      <path d="M31 20V44"/>
+    </g>
+    <g stroke="#ffffff">
+      <path d="M40 22H54"/>
+      <path d="M40 32H54"/>
+      <path d="M40 42H48" stroke-opacity="0.55"/>
+    </g>
+  </g>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+</svg>
+</div>
+      </div>
+
+      <div class="icons">
+        <div class="swatch dark">
+          <img src="concept-1-icon.svg" width="48" height="48" alt=""><img src="concept-1-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on dark</span>
+        </div>
+        <div class="swatch light">
+          <img src="concept-1-icon.svg" width="48" height="48" alt=""><img src="concept-1-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on light</span>
+        </div>
+      </div>
+
+      <p class="why">Speech on the left resolves into clean, settled lines of text on the right — the whole product in one glance.</p>
+    </article>
+
+    <article class="card">
+      <header class="card-hd">
+        <span class="num">02</span>
+        <h2>Strikethrough glyph</h2>
+      </header>
+
+      <div class="stage stage-dark">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c2lg-d2" x1="8" y1="32" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="c2ls-d2" x1="80" y1="32" x2="205" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <path d="M17 16 L32 47 L47 16" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 30.5 H55" fill="none" stroke="url(#c2lg-d2)" stroke-width="4" stroke-linecap="round"/>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+  <path d="M80 34 H142" fill="none" stroke="url(#c2ls-d2)" stroke-width="3" stroke-linecap="round"/>
+</svg>
+</div>
+      </div>
+
+      <div class="stage stage-light">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c2lg-l2" x1="8" y1="32" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="c2ls-l2" x1="80" y1="32" x2="205" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <path d="M17 16 L32 47 L47 16" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 30.5 H55" fill="none" stroke="url(#c2lg-l2)" stroke-width="4" stroke-linecap="round"/>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+  <path d="M80 34 H142" fill="none" stroke="url(#c2ls-l2)" stroke-width="3" stroke-linecap="round"/>
+</svg>
+</div>
+      </div>
+
+      <div class="icons">
+        <div class="swatch dark">
+          <img src="concept-2-icon.svg" width="48" height="48" alt=""><img src="concept-2-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on dark</span>
+        </div>
+        <div class="swatch light">
+          <img src="concept-2-icon.svg" width="48" height="48" alt=""><img src="concept-2-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on light</span>
+        </div>
+      </div>
+
+      <p class="why">A confident V cut by a gradient rule: the transparent-correction signature, and the most ownable single mark.</p>
+    </article>
+
+    <article class="card">
+      <header class="card-hd">
+        <span class="num">03</span>
+        <h2>Mic + caret</h2>
+      </header>
+
+      <div class="stage stage-dark">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c3lg-d3" x1="14" y1="50" x2="52" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <rect x="17" y="11" width="14" height="26" rx="7" fill="url(#c3lg-d3)"/>
+  <path d="M12 31v2a12 12 0 0 0 24 0v-2" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M24 45v6" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 16v32" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+</svg>
+</div>
+      </div>
+
+      <div class="stage stage-light">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c3lg-l3" x1="14" y1="50" x2="52" y2="14" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <rect x="17" y="11" width="14" height="26" rx="7" fill="url(#c3lg-l3)"/>
+  <path d="M12 31v2a12 12 0 0 0 24 0v-2" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M24 45v6" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M48 16v32" fill="none" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+</svg>
+</div>
+      </div>
+
+      <div class="icons">
+        <div class="swatch dark">
+          <img src="concept-3-icon.svg" width="48" height="48" alt=""><img src="concept-3-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on dark</span>
+        </div>
+        <div class="swatch light">
+          <img src="concept-3-icon.svg" width="48" height="48" alt=""><img src="concept-3-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on light</span>
+        </div>
+      </div>
+
+      <p class="why">Input and output in one lockup — a mic capsule and a live text caret, the two things the app actually touches.</p>
+    </article>
+
+    <article class="card">
+      <header class="card-hd">
+        <span class="num">04</span>
+        <h2>Abstract wordmark</h2>
+      </header>
+
+      <div class="stage stage-dark">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c4lg-d4" x1="166" y1="46" x2="180" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <text x="8" y="45" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="600" letter-spacing="-1.6" textLength="158" lengthAdjust="spacing">verbatim</text>
+  <circle cx="173" cy="40" r="5" fill="url(#c4lg-d4)"/>
+</svg>
+</div>
+      </div>
+
+      <div class="stage stage-light">
+        <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c4lg-l4" x1="166" y1="46" x2="180" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <text x="8" y="45" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="600" letter-spacing="-1.6" textLength="158" lengthAdjust="spacing">verbatim</text>
+  <circle cx="173" cy="40" r="5" fill="url(#c4lg-l4)"/>
+</svg>
+</div>
+      </div>
+
+      <div class="icons">
+        <div class="swatch dark">
+          <img src="concept-4-icon.svg" width="48" height="48" alt=""><img src="concept-4-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on dark</span>
+        </div>
+        <div class="swatch light">
+          <img src="concept-4-icon.svg" width="48" height="48" alt=""><img src="concept-4-icon.svg" width="24" height="24" alt="">
+          <span class="lbl">48 / 24 on light</span>
+        </div>
+      </div>
+
+      <p class="why">No metaphor, just the word, closed by a gradient period — the sentence is finished and clean.</p>
+    </article>
+    </div>
+    <footer>Cyan #22d3ee &rarr; violet #8b5cf6 &middot; all marks are hand-authored SVG</footer>
+  </div>
+</body>
+</html>

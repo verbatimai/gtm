@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" color="#ffffff" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c4lg" x1="166" y1="46" x2="180" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <text x="8" y="45" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="38" font-weight="600" letter-spacing="-1.6" textLength="158" lengthAdjust="spacing">verbatim</text>
+  <circle cx="173" cy="40" r="5" fill="url(#c4lg)"/>
+</svg>

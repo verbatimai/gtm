@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 216 64" width="216" height="64" color="#ffffff" role="img" aria-label="verbatim">
+  <defs>
+    <linearGradient id="c2lg" x1="8" y1="32" x2="56" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="c2ls" x1="80" y1="32" x2="205" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#08080d"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="13.5" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+  <path d="M17 16 L32 47 L47 16" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M9 30.5 H55" fill="none" stroke="url(#c2lg)" stroke-width="4" stroke-linecap="round"/>
+  <text x="80" y="42" fill="currentColor" font-family="Inter, 'SF Pro Text', system-ui, -apple-system, Segoe UI, sans-serif" font-size="30" font-weight="600" letter-spacing="-1" textLength="125" lengthAdjust="spacing">verbatim</text>
+  <path d="M80 34 H142" fill="none" stroke="url(#c2ls)" stroke-width="3" stroke-linecap="round"/>
+</svg>
