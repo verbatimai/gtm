@@ -17,6 +17,7 @@ const COLUMNS: [string, [string, string][]][] = [
     [
       ["The story", "/#story"],
       ["Demo", "/demo"],
+      ["Compare vs Wispr Flow", "/compare"],
       ["Download", DOWNLOAD_URL],
       ["Stats for nerds", "/nerds"],
     ],
